@@ -10,18 +10,20 @@ class Pelicula(models.Model):
         ('D', '"D" - Películas para adultos, con sexo explícito'),
 		
 	)
-	listaEstado =(
-		('True', 'Si'),
-		('False', 'No')
+	listaProyeccion =(
+		('si', 'Si'),
+		('no', 'No'),
+       
 		
 	)
 	pelicula_id = models.AutoField(primary_key = True)
 	nombre_pelicula = models.CharField(max_length=75, unique = True, null=False)
+	genero = models.CharField(max_length=50, null=False)
 	sinopsis = models.CharField(max_length=50, null=False)
-	genero = models.CharField(max_length=15, choices = listaGenero, default= '"A" - Aptas para todo publico', null=False)
+	clasificacion = models.CharField(max_length=15, choices = listaGenero, default= '"A" - Aptas para todo publico', null=False)
 	fechaLanzamiento =  models.DateField(auto_now = False, auto_now_add = False, null = False)
 	duracion = models.CharField(max_length=25)
-	estado = models.BooleanField(null=False, choices = listaEstado, default=True)
+	proyeccion = models.CharField(max_length=15,null=False, choices = listaProyeccion)
 	director = models.CharField(max_length=25)
 	protagonistas = models.TextField(max_length=50, default='n/a')
 	imagen = models.ImageField(upload_to="portadas", null=True)

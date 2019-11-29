@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from .forms import FormularioPelicula, FormularioPersona
+from .forms import FormularioPelicula, FormularioPersona, FormularioEditarPelicula
 from apps.modelo.models import Pelicula, Persona
 
 
 def principal(request):
-    lista = Pelicula.objects.all()
+    lista = Pelicula.objects.filter(proyeccion = 'proyeccion')
     context = {
         'lista' : lista,
     }
@@ -21,11 +21,12 @@ def registrarPelicula(request):
             datos = formulario_pelicula.cleaned_data
             pelicula = Pelicula()
             pelicula.nombre_pelicula = datos.get('nombre_pelicula')
-            pelicula.sinopsis = datos.get('sinopsis')
             pelicula.genero = datos.get('genero')
+            pelicula.sinopsis = datos.get('sinopsis')
+            pelicula.clasificacion = datos.get('clasificacion')
             pelicula.fechaLanzamiento = datos.get('fechaLanzamiento')
             pelicula.duracion = datos.get('duracion')
-            pelicula.estado = True
+            pelicula.proyeccion = datos.get('proyeccion')
             pelicula.director = datos.get('director')
             pelicula.protagonistas = datos.get('protagonistas')
             pelicula.imagen = datos.get('imagen')
@@ -38,9 +39,19 @@ def registrarPelicula(request):
     return render(request,'pelicula/registrar_pelicula.html', context)
 
 def editarPelicula(request):
-    formulario_pelicula = FormularioPelicula(request.POST) 
+    nombre = request.GET['nombre_pelicula']
+    pelicula = Pelicula.objects.get(nombre_pelicula = nombre)
+    if request.method == 'POST':
+        formulario_editar = FormularioEditarPelicula(request.POST)
+        if formulario_editar.is_valid():
+            datos = formulario_editar.cleaned_data
+            pelicula.proyeccion = datos.get('proyeccion')
+            pelicula.save()
+            return redirect(verPelicula)
+    else:
+        formulario_editar = FormularioEditarPelicula(instance = pelicula)
     context = {
-        'f': formulario_pelicula 
+        'f': formulario_editar 
     }
 
     return render(request,'pelicula/editar_pelicula.html', context)

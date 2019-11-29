@@ -24,6 +24,7 @@
                 <th>Duraciom</th>
                 <th>Director</th>
                 <th>Protagonistas</th>
+                <th>Proyeccion</th>
                 <th>Editar Pelicula</th>
             </tr>
             </thead>
@@ -36,7 +37,8 @@
                     <th>{{c.duracion}}</th>
                     <th>{{c.director}}</th>
                     <th>{{c.protagonistas}}</th>
-                    <th><a href="/cine/editar_pelicula">editar</a></th>
+                    <th>{{c.proyeccion}}</th>
+                    <th><a href="/cine/editar_pelicula?nombre_pelicula={{c.nombre_pelicula}}">editar</a></th>
                     
                 </tr>
             

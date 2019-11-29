@@ -6,9 +6,12 @@
             <h1>Registro de peliculas</h1>
         <form id="register-form" class="login" method="POST" >{%csrf_token%}
 
-            <div class="field-wrap">
-               {{f}}
-            </div>
+            <div>
+                <label for="nombre">Nombre de la pelicula</label>
+                <input type="text" placeholder="Nombre de la pelicula" name="nombre_pelicula" id="nombre_peli"
+                    class="login__input" />
+            </div><br>
+            <div>
 
             <div class="form" style="text-align: right">
                 <br>
