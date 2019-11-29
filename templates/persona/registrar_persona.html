@@ -1,0 +1,52 @@
+{% extends 'principal.html' %}
+{% block body%}
+
+
+<!-- Main content -->
+<div class="container section small-padding">
+    <form id="register-form" class="login" method="POST" action="guardar_persona">
+            <h1>Registrarse</h1>
+        <div class="field-wrap">
+
+
+            <div>
+                <label for="nombres">Ingrese sus nombres</label>
+                <input type="text" placeholder="Nombres" name="nombres" id="nombres" class="login__input" />
+            </div><br>
+            <div>
+                <label for="">Ingrese sus apellidos</label>
+                <input type="text" placeholder="Apellidos" name="apellidos" id="apellidos" class="login__input" />
+            </div><br>
+            <div>
+                <label for="">Ingrese su cedula de identidad</label>
+                <input type="text" placeholder="CI" name="cedula" id="cedula" class="login__input" />
+            </div><br>
+            <div>
+                <label for="">Ingrese su fecha de nacimiento</label>
+                <input type="date" placeholder="Fecha de nacimiento" name="fechaNacimiento" id="fechaNacimiento"
+                    class="login__input" />
+            </div><br>
+            <div>
+                <label for="">Edad</label>
+                <input type="text" placeholder="Edad" name="edad" id="edad" class="login__input" readonly />
+            </div><br>
+            <div>
+                <label for="">Ingrese su correo electronico</label>
+                <input type="email" placeholder="Email" name="email" id="email" />
+            </div><br>
+            <div>
+                <label for="">Ingrese su contraseña</label>
+                <input type="password" placeholder="Contraseña" name="clave" id="clave" />
+            </div>
+
+        </div>
+
+        <div class="form" style="text-align: right">
+            <br>
+            <a type='' id="reg" href="/" class="btn btn-danger" value="">Cancelar</a>
+            <button type='submit' id="reg" class="btn btn-success" value="submit">Registrarse</button>
+        </div>
+    </form>
+
+</div>
+{% endblock %}
