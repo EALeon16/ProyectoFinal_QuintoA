@@ -7,9 +7,14 @@
         <form id="register-form" class="login" method="POST" >{%csrf_token%}
 
             <div>
-                <label for="nombre">Nombre de la pelicula</label>
-                <input type="text" placeholder="Nombre de la pelicula" name="nombre_pelicula" id="nombre_peli"
-                    class="login__input" />
+                <label for="">Estreno</label>
+                <select name="proyeccion" id="proyeccion">
+                    <option value="">-------Eliga una opcion--------</option>
+
+                    <option value="si">SI</option>
+                    <option value="no">NO
+                    </option>
+                </select>
             </div><br>
             <div>
 

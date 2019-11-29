@@ -4,7 +4,7 @@ from apps.modelo.models import Pelicula, Persona
 
 
 def principal(request):
-    lista = Pelicula.objects.filter(proyeccion = 'proyeccion')
+    lista = Pelicula.objects.filter(proyeccion = 'si')
     context = {
         'lista' : lista,
     }
