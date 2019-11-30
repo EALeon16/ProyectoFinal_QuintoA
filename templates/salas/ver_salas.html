@@ -1,0 +1,30 @@
+{% extends 'principal.html' %}
+{% block body%}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<div class="container">
+    <h1>Salas</h1>
+        <div >
+            <a href="/cine/agregar_sala" class="btn btn-info " style="float: right;">
+                <span class="glyphicon glyphicon-plus" ></span>Agregar 
+              </a>
+        </div>
+        <div>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nombre de la sala</th>
+                        <th>Nro de asientos</th>
+                    </tr>
+                    </thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            
+                        </tr>
+            
+                </table>
+        </div>
+    
+</div>
+{% endblock%}

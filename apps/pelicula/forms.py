@@ -15,6 +15,11 @@ class FormularioPersona(forms.ModelForm):
         model = Persona
         fields = ["nombres", "apellidos", "fechaNacimiento", "edad","correo"]
 
+class FormularioPersona(forms.ModelForm):
+    class Meta:
+        model = Persona
+        fields = ["nombres", "apellidos", "fechaNacimiento", "edad","correo"]
+
 
 
 

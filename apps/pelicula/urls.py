@@ -9,5 +9,7 @@ urlpatterns = [
     path('registrar_pelicula/', views.registrarPelicula),
     path('ver_pelicula/', views.verPelicula),
     path('editar_pelicula/', views.editarPelicula),
+    path('ver_sala/', views.verSala),
+    path('agregar_sala/', views.agregarSala),
     
 ]

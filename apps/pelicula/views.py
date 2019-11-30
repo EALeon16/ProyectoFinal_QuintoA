@@ -63,4 +63,18 @@ def verPelicula(request):
     }
     return render(request,'pelicula/ver_pelicula.html', context)
 
+def verSala(request):
+    lista = Pelicula.objects.all()
+    context = {
+        'lista' : lista,
+    }
+    return render(request,'salas/ver_salas.html', context)
+
+def agregarSala(request):
+    lista = Pelicula.objects.all()
+    context = {
+        'lista' : lista,
+    }
+    return render(request,'salas/agregar_sala.html', context)
+
 
