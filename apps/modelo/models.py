@@ -42,6 +42,7 @@ class Sala(models.Model):
 	sala_id = models.AutoField(primary_key = True)
 	nombre_sala = models.CharField(max_length=75, unique = True, null=False)
 	nro_asientos = models.IntegerField(max_length=50, null=False)
+	estado = models.BooleanField(default =True)
 
 class Horario(models.Model):
 	horario_id = models.AutoField(primary_key = True)

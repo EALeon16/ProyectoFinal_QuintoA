@@ -17,12 +17,13 @@
                         <th>Nro de asientos</th>
                     </tr>
                     </thead>
+                    {% for c in lista%}
                         <tr>
-                            <th></th>
-                            <th></th>
+                            <th>{{c.nombre_sala}}</th>
+                            <th>{{c.nro_asientos}}</th>
                             
                         </tr>
-            
+                        {% endfor%}
                 </table>
         </div>
     

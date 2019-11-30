@@ -1,5 +1,5 @@
 from django import forms 
-from apps.modelo.models import Pelicula, Persona
+from apps.modelo.models import Pelicula, Persona, Sala
 class FormularioPelicula(forms.ModelForm):
     class Meta:
         model = Pelicula
@@ -15,10 +15,12 @@ class FormularioPersona(forms.ModelForm):
         model = Persona
         fields = ["nombres", "apellidos", "fechaNacimiento", "edad","correo"]
 
-class FormularioPersona(forms.ModelForm):
+class FormularioSala(forms.ModelForm):
     class Meta:
-        model = Persona
-        fields = ["nombres", "apellidos", "fechaNacimiento", "edad","correo"]
+        model = Sala
+        fields = ["nombre_sala", "nro_asientos"]
+
+        
 
 
 

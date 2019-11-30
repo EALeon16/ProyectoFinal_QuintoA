@@ -1,1 +1,27 @@
-hola
+{% extends 'principal.html' %}
+{% block body%}
+
+
+<!-- Main content -->
+<div class="container section small-padding">
+    <form id="register-form" class="login" method="POST">{%csrf_token%}
+            <div>
+                    <label for="nombres">Ingrese el nombre sala</label>
+                    <input type="text" placeholder="ingrese el nombre de la sala" name="nombre_sala" id="nsala" class="login__input" required />
+                </div><br>
+                <div>
+                    <label for="">Ingrese el numero de asientos</label>
+                    <input type="text" placeholder="Asientos totales" name="nro_asientos" id="asientos" class="login__input" required />
+                </div><br>
+                
+            </div>
+    
+            <div class="form" style="text-align: right">
+                <br>
+                <a type='' id="reg" href="/" class="btn btn-danger" value="">Cancelar</a>
+                <button type='submit' id="reg" class="btn btn-success" value="submit">Registrarse</button>
+            </div>
+    </form>
+
+</div>
+{% endblock %}

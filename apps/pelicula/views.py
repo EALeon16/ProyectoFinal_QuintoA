@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import FormularioPelicula, FormularioPersona, FormularioEditarPelicula
-from apps.modelo.models import Pelicula, Persona
+from .forms import FormularioPelicula, FormularioPersona, FormularioEditarPelicula, FormularioSala
+from apps.modelo.models import Pelicula, Persona, Sala
 
 
 def principal(request):
@@ -64,16 +64,24 @@ def verPelicula(request):
     return render(request,'pelicula/ver_pelicula.html', context)
 
 def verSala(request):
-    lista = Pelicula.objects.all()
+    lista = Sala.objects.all()
     context = {
         'lista' : lista,
     }
     return render(request,'salas/ver_salas.html', context)
 
 def agregarSala(request):
-    lista = Pelicula.objects.all()
+    formularioS = FormularioSala(request.POST)
+    if request.method == 'POST':
+        if formularioS.is_valid():
+            datos = formularioS.cleaned_data
+            sala = Sala()
+            sala.nombre_sala = datos.get('nombre_sala')
+            sala.nro_asientos = datos.get('nro_asientos')
+            sala.save()
+            return redirect(verSala)
     context = {
-        'lista' : lista,
+        'fs': formularioS,
     }
     return render(request,'salas/agregar_sala.html', context)
 
