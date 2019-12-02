@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .forms import FormularioPelicula, FormularioPersona, FormularioEditarPelicula, FormularioSala
 from apps.modelo.models import Pelicula, Persona, Sala
 
@@ -31,7 +32,8 @@ def registrarPelicula(request):
             pelicula.protagonistas = datos.get('protagonistas')
             pelicula.imagen = datos.get('imagen')
             pelicula.save()
-            return redirect(principal)
+            messages.success(request, 'Pelicula registrada correctamente')
+            return redirect(verPelicula)
     context = {
         'f': formulario_pelicula 
     }
@@ -47,6 +49,7 @@ def editarPelicula(request):
             datos = formulario_editar.cleaned_data
             pelicula.proyeccion = datos.get('proyeccion')
             pelicula.save()
+            messages.success(request, 'Datos de la pelicula actualizados correctamente')
             return redirect(verPelicula)
     else:
         formulario_editar = FormularioEditarPelicula(instance = pelicula)
@@ -78,6 +81,7 @@ def agregarSala(request):
             sala = Sala()
             sala.nombre_sala = datos.get('nombre_sala')
             sala.nro_asientos = datos.get('nro_asientos')
+            messages.success(request, 'Sala agregada correctamnete')
             sala.save()
             return redirect(verSala)
     context = {

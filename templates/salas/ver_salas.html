@@ -4,6 +4,17 @@
 
 <div class="container">
     <h1>Salas</h1>
+    <div class="form-group" >
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>
+                <div class="alert alert-success">{{ message }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif%}
+    </div>
         <div >
             <a href="/cine/agregar_sala" class="btn btn-info " style="float: right;">
                 <span class="glyphicon glyphicon-plus" ></span>Agregar 
