@@ -38,7 +38,7 @@
                     
                     <option value="">-------Eliga una opcion--------</option>
                     {% for c in lista%}
-                    <option value="/?peli={{c.id_pelicula}}">{{c.nombre_pelicula}}</option>
+                    <option value="{{c.pelicula_id}}">{{c.nombre_pelicula}}</option>
 
                     {% endfor %}
                     </option>
@@ -48,7 +48,7 @@
                     
                     <option value="">-------Eliga una opcion--------</option>
                     {% for c in listas%}
-                    <option value="{{c.id_sala}}">{{c.nombre_sala}}</option>
+                    <option value="{{c.sala_id}}">{{c.nombre_sala}}</option>
 
                     {% endfor %}
                     </option>
