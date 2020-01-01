@@ -23,6 +23,8 @@ from apps.pelicula import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cine/', include('apps.pelicula.urls')), 
+    path('cartelera/', include('apps.horario.urls')),
+    path('adquirirBoleto/', include('apps.boleto.urls')),
 ]
 
 #PARA IMAGENES

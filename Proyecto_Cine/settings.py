@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'apps.pelicula',
     'apps.modelo',
     'apps.sala',
+    'apps.horario',
+    'apps.boleto',
 ]
 
 MIDDLEWARE = [

@@ -66,8 +66,11 @@
 						<li class="active">
 							<a href="/cine">Home</a>
 						</li>
-						<li>
-							<a href="whats-on.html">What's on</a>
+						<li class="dropdown">
+							<a href="">Cartelera</a>
+							<ul class="dropdown-menu">
+								<li><a href="/cartelera">Agregar cartelera</a></li>
+							</ul>
 						</li>
 						<li class="dropdown">
 							<a href="">Peliculas</a>
@@ -333,12 +336,12 @@
 							<div class="row movie-tabs">
 								<div class="col-md-2 col-sm-3">
 									<a href="single-movie.html">
-										<img src="{{c.imagen.url}}" alt="Movie title" />
+										<img src="{{c.pelicula.imagen.url}}" alt="Movie title" />
 									</a>
 								</div>
 								<div class="col-md-10 col-sm-9">
-									<span class="title">Genero</span>
-									<h3 class="no-underline">{{c.nombre_pelicula}}</h3>
+									<span class="title">{{c.pelicula.genero}}</span>
+									<h3 class="no-underline">{{c.pelicula.nombre_pelicula}}</h3>
 									<p>{{c.sinopsis}}</p>
 									<p><a href="single-movie.html" class="arrow-button">Full synopsis</a></p>
 									<div class="row">
@@ -346,16 +349,14 @@
 											<hr class="space-10" />
 											<span class="viewing-times">
 												<i class="material-icons">access_time</i>
-												Viewing times
+												Horarios
 											</span>
-											<span class="time past">14:45</span>
-											<span class="time">18:30</span>
-											<span class="time">20:30</span>
-											<span class="time">24:45</span>
+											<a href="/adquirirBoleto?id={{c.horario_id}} " class="time past">{{c.hora_pelicula}}</a>
+											
 										</div>
 										<div class="col-md-4 col-sm-3 running-time">
 											<hr class="space-10" />
-											{{c.duracion}} <span class="certificate">{{c.genero}}</span>
+											{{c.pelicula.duracion}} min<span class="certificate">{{c.pelicula.clasificacion}}</span>
 										</div>
 									</div>
 								</div>

@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import FormularioPelicula, FormularioPersona, FormularioEditarPelicula, FormularioSala
-from apps.modelo.models import Pelicula, Persona, Sala
+from apps.modelo.models import Pelicula, Persona, Sala, Horario
 
 
 def principal(request):
-    lista = Pelicula.objects.filter(proyeccion = 'si')
+    lista = Horario.objects.all()
     context = {
         'lista' : lista,
     }
@@ -34,6 +34,11 @@ def registrarPelicula(request):
             pelicula.save()
             messages.success(request, 'Pelicula registrada correctamente')
             return redirect(verPelicula)
+        else:
+            messages.error(request, 'Esta pelicula ya esta registrada')
+                 
+   
+    
     context = {
         'f': formulario_pelicula 
     }
@@ -84,9 +89,16 @@ def agregarSala(request):
             messages.success(request, 'Sala agregada correctamnete')
             sala.save()
             return redirect(verSala)
+        else:
+            messages.error(request, 'Esta sala ya existe')
+
     context = {
         'fs': formularioS,
     }
     return render(request,'salas/agregar_sala.html', context)
+
+
+
+    
 
 
