@@ -5,6 +5,8 @@ from apps.modelo.models import Horario, Pelicula, Sala
 
 
 def agregarHorario(request):
+    peli = request.GET['peli']
+    pelicula = Pelicula.objects.get(pelicula_id = peli)
     lista = Pelicula.objects.all()
     listas= Sala.objects.all()
     formulario_horario = FormularioHorario(request.POST)
@@ -14,7 +16,7 @@ def agregarHorario(request):
             horario = Horario()
             horario.hora_pelicula = datos.get('hora_pelicula')
             horario.fecha_pelicua = datos.get('fecha_pelicua')
-            horario.pelicula = datos.get('pelicula')
+            horario.pelicula = pelicula
             horario.sala = datos.get('sala')
             horario.save()
             messages.success(request, 'Horario registrado correctamente')
@@ -36,22 +38,23 @@ def agregarHorario(request):
 def agregarHorario1 (request):
     lista = Pelicula.objects.all()
     listas= Sala.objects.all()
+    peli = request.GET.get('peli')
+    peliculas = Pelicula.objects.get(pelicula_id = peli)
     formulario_horario = FormularioHorario(request.POST)
     if request.method == 'POST':
         if formulario_horario.is_valid():
             datos = formulario_horario.cleaned_data
-            existes = (Horario.objects.filter(sala_id = datos.get('sala')).count() > 0)
-            existep = (Horario.objects.filter(pelicula_id = datos.get('pelicula')).count() > 0)
+            existes = (Horario.objects.filter(sala_id = datos.get('sala') , fecha_pelicua = datos.get('fecha_pelicua') ,hora_pelicula = datos.get('hora_pelicula')).count() > 0)
             existef = (Horario.objects.filter(fecha_pelicua = datos.get('fecha_pelicua')).count() > 0)
             existeh = (Horario.objects.filter(hora_pelicula = datos.get('hora_pelicula')).count() > 0)
 
-            if existes & existep & existef & existeh :
+            if existes:
                 messages.error(request, 'Este horario ya esta registrado')
             else:
                 horario = Horario()
                 horario.hora_pelicula = datos.get('hora_pelicula')
                 horario.fecha_pelicua = datos.get('fecha_pelicua')
-                horario.pelicula = datos.get('pelicula')
+                horario.pelicula = peliculas
                 horario.sala = datos.get('sala')
                 horario.save()
                 messages.success(request, 'Horario registrado correctamente')

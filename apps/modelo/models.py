@@ -75,6 +75,9 @@ class Boleto(models.Model):
 		on_delete = models.CASCADE,
 	)
 	
+class Rol(models.Model):
+	rol_id = models.AutoField(primary_key = True)
+	tipo = models.CharField(max_length=75, unique = True, null=False)
 
    
 

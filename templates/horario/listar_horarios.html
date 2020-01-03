@@ -35,15 +35,10 @@
             </thead>
             {% for c in lista%}
                 <tr>
-                    <th>{{c.nombre_pelicula}}</th>
-                    <th>{{c.sinopsis}}</th>
-                    <th>{{c.genero}}</th>
-                    <th>{{c.fechaLanzamiento}}</th>
-                    <th>{{c.duracion}}</th>
-                    <th>{{c.director}}</th>
-                    <th>{{c.protagonistas}}</th>
-                    <th>{{c.proyeccion}}</th>
-                    <th><a href="/cine/editar_pelicula?nombre_pelicula={{c.nombre_pelicula}}">editar</a></th>
+                    <th>{{c.hora_pelicula}}</th>
+                    <th>{{c.fecha_pelicua}}</th>
+                    <th>{{c.pelicula.nombre_pelicula}}</th>
+                    <th>{{c.sala.nombre_sala}}</th>
                     
                 </tr>
             
